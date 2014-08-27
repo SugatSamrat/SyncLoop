@@ -1,9 +1,9 @@
 var loopback = require("loopback");
 var app = require('../../server/server');
 var async = require("async");
- 
+
 var ds = app.dataSources.db;
-var aggregateModel = ds.getModel ('racoon');
+var aggregateModel = ds.getModel ('racoonx');
 
 // Hiding the existing remote methods.
 aggregateModel.sharedClass.find('create',true).shared = false;
@@ -18,8 +18,8 @@ aggregateModel.sharedClass.find('count',true).shared = false;
 aggregateModel.sharedClass.find('updateAttributes',false).shared = false;
 
 // Adding a new remote method "testMethod" on Model "Aggregate"
-module.exports = function(racoon) {
-	racoon.testMethod = function(cb) {
+module.exports = function(racoonx) {
+	racoonx.testMethod = function(cb) {
 
 		function callRestService (serviceName, cb) {
 			var searchResults = [];
@@ -60,10 +60,10 @@ module.exports = function(racoon) {
 			},
 
 			function(cb) {
-				callRestService('Category', cb);	
+				callRestService('Category', cb);
 			}
 
-		], 
+		],
 		// Callback function
 		function(err, results) {
 			console.log("final: " + results.length);
@@ -75,18 +75,18 @@ module.exports = function(racoon) {
 
 	}
 
-	racoon.remoteMethod(
+	racoonx.remoteMethod(
 		'testMethod',
 		{
 			returns: {arg:'Aggregate', type: 'Object'}
 		}
 	);
-	
-	racoon.testMethod2 = function(cb) {
+
+	racoonx.testMethod2 = function(cb) {
 		cb(null,"Hi Sugat");
 	}
-	
-	racoon.remoteMethod(
+
+	racoonx.remoteMethod(
 		'testMethod2',
 		{
 			returns: {arg:'Result', type: 'String'},

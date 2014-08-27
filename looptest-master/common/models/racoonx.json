@@ -1,6 +1,6 @@
 {
-  "name": "racoon",
-  "plural": "racoons",
+  "name": "racoonx",
+  "plural": "racoonxs",
   "base": "PersistedModel",
   "properties": {},
   "validations": [],
