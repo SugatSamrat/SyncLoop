@@ -1,0 +1,67 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "wcsProductDS": {
+    "name": "wcsProductDS",
+    "connector": "rest",
+    "debug": "true",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://toothless.mybluemix.net/product/{productId}",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getProductById": [
+            "productId"
+          ]
+        }
+      }
+    ]
+  },
+  "wcsCategoryDS": {
+    "name": "wcsCategoryDS",
+    "connector": "rest",
+    "debug": "true",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://toothless.mybluemix.net/category/{categoryId}",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getCategoryById": [
+            "categoryId"
+          ]
+        }
+      }
+    ]
+  },
+  "fbDS": {
+    "name": "fbDS",
+    "connector": "rest",
+    "debug": "true",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://graph.facebook.com/pivotalsoftware",
+          "headers": {
+            "content-type": "application/json"
+          }
+        },
+        "functions": {
+          "getGraph": []
+        }
+      }
+    ]
+  }
+}

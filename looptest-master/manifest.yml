@@ -1,0 +1,9 @@
+applications:
+- disk_quota: 1024M
+  host: looptest-master
+  name: looptest-master
+  command: node server/server.js
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 128M
